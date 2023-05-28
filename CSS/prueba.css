@@ -1,0 +1,127 @@
+
+
+
+body{
+  background: rgb(69, 30, 30);
+}
+
+.superior{
+    background: #fff;
+    position:fixed;
+    width:1501px;
+    z-index: 1;
+    margin:-10px;
+}
+
+.inferior{
+    margin-top: 155px;
+    z-index: 0;
+}
+
+/**Cabecera---------------------------------------------------------------------------------------------------------------------------------*/
+
+    .R1{
+        background:rgb(0, 0, 0);
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top:0px;
+    }
+
+    .Cabecera{
+        background:rgb(252, 252, 252);
+        color: rgb(255, 0, 0) ;
+        width:50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+/**BarraNavegacion--------------------------------------------------------------------------------------------------------------------------*/
+
+    .R2{
+        position: relative;
+        background:rgb(0, 255, 115);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .BarraNavegacion{
+        width:90%;
+        background: rgb(255, 255, 255);
+        margin:0;
+    }
+
+/**Secciones--------------------------------------------------------------------------------------------------------------------------------*/
+
+    .R3{
+        position: relative;
+        background:rgb(3, 3, 3);
+
+        width: 70%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .Secciones{
+        background: rgb(102, 160, 255);
+        width: 90%;
+        border: 5px solid black;
+    }
+
+    section img{
+        width:80%;
+        padding:5%;
+    }
+
+    .Articulos{
+        padding: 5%;
+    }
+
+    .Titulos{
+        color:rgb(119, 102, 232);
+    }
+
+    p{
+        color: white;
+    }
+
+    cite{
+        color:rgb(0, 255, 68)
+    }
+
+/**BarraLateral-----------------------------------------------------------------------------------------------------------------------------*/
+
+    .R4{
+        position: fixed;
+        background: rgb(255, 0, 0);
+        width: 29%;
+
+        Bottom:140px;
+        right:0px;
+    }
+
+    .BarraLateral{
+        margin: 3%;
+        background: rgb(55, 0, 255);
+        width: 90%;
+        padding: 5px;
+    }
+
+/**PiePagina--------------------------------------------------------------------------------------------------------------------------------*/
+
+    .R5{
+        position: relative;
+        background: rgb(0, 0, 0);
+    }
+
+    .PiePagina{
+        background: rgb(22, 154, 90);
+        padding: 5px;
+        margin: 1%;
+        padding: 1%;
+        border: 5px dotted black;
+    }
