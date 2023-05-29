@@ -1,0 +1,40 @@
+.R1{
+    background: green;
+    position: relative;
+    width:50%;
+    height:585px;
+    float:right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.RecuadroInicio{
+    background: greenyellow;
+    width: 95%;
+}
+
+.Titulos{
+    text-align: center;
+}
+
+.R2{
+    height:585px;
+    background: blue;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.LOGIN{
+    background:white;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+li{
+    list-style: none;
+}
