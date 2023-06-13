@@ -7,3 +7,5 @@ app= Flask(__name__)
 def cindex():
     return "Hola mundo Flask"
 
+if __name__=='__main__':
+    app.run(port=5000)
