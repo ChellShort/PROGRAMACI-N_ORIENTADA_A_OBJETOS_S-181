@@ -11,6 +11,7 @@ app.config['MYSQL_PASSWORD']=''
 app.config['MYSQL_DB']='prueba' 
 mysql= MySQL(app)
 
+
 #declaración de la ruta principal (index) http://localhost:5000
 @app.route('/')
 def index(): #metodo index
