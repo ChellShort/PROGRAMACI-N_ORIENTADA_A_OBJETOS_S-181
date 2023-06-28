@@ -40,6 +40,7 @@ def guardar(): #metodo guardar
     flash('El album fue agregado correctamente')
     return redirect(url_for('index'))
 
+
 @app.route('/eliminar')
 def eliminar(): #metodo eliminar
     return "Se elimino la base de datos"
