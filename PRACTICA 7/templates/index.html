@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Albums</title>
+</head>
+<body>
+    
+    <h1>Gestión de Albums</h1>
+    <br>
+    {% with mensajes = get_flashed_messages() %}
+        {% if mensajes %}
+            {% for msj in mensajes %}
+                <h5>{{msj}}</h5>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <br>
+    <form action="/guardar" method="POST">
+        <label>Titulo:</label>
+        <input type="text" name="txtTitulo" placeholder="Escribe un Titulo" required>
+        <label>Artista:</label>
+        <input type="text" name="txtArtista" placeholder="Escribe un Artista" required>
+        <label>Año:</label>
+        <input type="number" name="txtAnio" placeholder="Escribe un Año" required>
+        <button type="submit">Guardar</button>
+    </form>
+    
+
+
+    <br>
+    <br>
+
+        <h2> Albums guardados </h2>
+        <table>
+            <thead>
+                <tr>
+                    <td>Id: </td>
+                    <td>Album: </td>
+                    <td>Artista: </td>
+                    <td>Año publicación: </td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for alb in listAlbums %}
+                    <tr>
+                        <td> {{alb.0}} </td>
+                        <td> {{alb.1}} </td>
+                        <td> {{alb.2}} </td>
+                        <td> {{alb.3}} </td>
+                        <td>
+                            <a href=#>Editar</a>
+                            <a href=#>Borrar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+</body>
+</html>

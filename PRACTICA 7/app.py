@@ -9,14 +9,18 @@ app.config['MYSQL_HOST']='localhost'
 app.config['MYSQL_USER']='root'
 app.config['MYSQL_PASSWORD']=''
 app.config['MYSQL_DB']='prueba' 
-app.config['MYSQL_DB']='dbflask'
 app.secret_key='mysecretkey'
 mysql= MySQL(app)
 
 #declaración de la ruta principal (index) http://localhost:5000
 @app.route('/')
 def index(): #metodo index
-    return render_template('index.html') #el metodo index nos lleva a index.html
+    #hacer la consulta para mostrar una vista junto con la renderización
+    CC=mysql.connection.cursor()  #nuevo (conectamos con la base de datos con un objeto de tipo cursor)
+    CC.execute('SELECT * FROM tb_albums')  #nuevo (aqui esta nuestra secuencia sql)
+    conAlbums=CC.fetchall() #nuevo (devuelve los valores de la secuencia sql)
+    #print(conAlbums) #nuevo (se iprime en consola el contendio de la tabla)
+    return render_template('index.html', listAlbums=conAlbums) #el metodo index nos lleva a index.html
 
 #ruta http://localhost:5000/guardar tipo POST para Insert
 @app.route('/guardar', methods=['POST']) #recibira infor por formulario mediante post
