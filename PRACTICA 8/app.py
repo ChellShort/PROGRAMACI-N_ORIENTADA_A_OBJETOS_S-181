@@ -44,9 +44,13 @@ def guardar(): #metodo guardar
 @app.route('/editar/<string:id>')
 def editar(id): #metodo editar
     cursorID= mysql.connection.cursor()
-    cursorID.execute('SELECT * from tb_albums where id=%s', (id))
+    cursorID.execute('SELECT * from tb_albums where id=%s', (id,))
     consulID=cursorID.fetchone()
     return render_template('editarAlbum.html', album=consulID)
+
+@app.route('/actualizar/<id>', methods=['POST'])
+def actualizar(id): #metodo actualizar
+    return redirect(url_for('editarAlbum'))
 #------------------------------------------------------------
 
 @app.route('/eliminar')
