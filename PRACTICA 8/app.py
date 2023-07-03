@@ -40,6 +40,14 @@ def guardar(): #metodo guardar
     flash('El album fue agregado correctamente')
     return redirect(url_for('index'))
 
+#------------------------------------------------------------
+@app.route('/editar/<string:id>')
+def editar(id): #metodo editar
+    cursorID= mysql.connection.cursor()
+    cursorID.execute('SELECT * from tb_albums where id=%s', (id))
+    consulID=cursorID.fetchone()
+    return render_template('editarAlbum.html', album=consulID)
+#------------------------------------------------------------
 
 @app.route('/eliminar')
 def eliminar(): #metodo eliminar
