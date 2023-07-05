@@ -58,8 +58,17 @@ def actualizar(id): #metodo actualizar
         curAct = mysql.connection.cursor() # objeto de tipo cursor
         curAct.execute('UPDATE tb_albums set titulo = %s, artista = %s, anio =%s WHERE id=%s',(varTitulo, varArtista, varAnio, id))
         mysql.connection.commit()
-    flash('El album fue actualizado correctamente ' + varTitulo)
+    flash('El album ' + varTitulo + ' fue actualizado correctamente ')
     return redirect(url_for('index'))
+
+@app.route('/borrar/<id>')
+def borrar(id):
+    cursorBorrar=mysql.connection.cursor()
+    cursorBorrar.execute('DELETE from tb_albums WHERE id=%s', (id,))
+    mysql.connection.commit()
+    flash('El album fue eliminado')
+    return redirect(url_for('index'))
+
 #------------------------------------------------------------
 
 @app.route('/eliminar')
