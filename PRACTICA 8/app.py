@@ -50,7 +50,16 @@ def editar(id): #metodo editar
 
 @app.route('/actualizar/<id>', methods=['POST'])
 def actualizar(id): #metodo actualizar
-    return redirect(url_for('editarAlbum'))
+    if request.method == 'POST':
+        varTitulo=request.form['txtTitulo']
+        varArtista=request.form['txtArtista']
+        varAnio=request.form['txtAnio']
+
+        curAct = mysql.connection.cursor() # objeto de tipo cursor
+        curAct.execute('UPDATE tb_albums set titulo = %s, artista = %s, anio =%s WHERE id=%s',(varTitulo, varArtista, varAnio, id))
+        mysql.connection.commit()
+    flash('El album fue actualizado correctamente ' + varTitulo)
+    return redirect(url_for('index'))
 #------------------------------------------------------------
 
 @app.route('/eliminar')
