@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Albums</title>
+</head>
+<body>
+    
+    <h1>Ingresión de Frutas</h1>
+    <br>
+    {% with mensajes = get_flashed_messages() %}
+        {% if mensajes %}
+            {% for msj in mensajes %}
+                <h5>{{msj}}</h5>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <br>
+    <form action="/guardar" method="POST">
+        <label>Fruta:</label>
+        <input type="text" name="txtFruta" placeholder="Escribe una fruta" required>
+        <label>Temporada:</label>
+        <input type="date" name="txtTemporada" placeholder="Escribe la temporada de la fruta" required>
+        <label>Precio:</label>
+        <input type="number" name="txtPrecio" placeholder="Escribe el precio de la fruta" step="0.01" required>
+        <label>Stock:</label>
+        <input type="number" name="txtStock" placeholder="Escribe el stock" required>
+        <button type="submit">Guardar</button>
+    </form>
+
+    <br>
+        <br>
+
+        <a href=/>Regresar</a>
+
+</body>
+</html>
