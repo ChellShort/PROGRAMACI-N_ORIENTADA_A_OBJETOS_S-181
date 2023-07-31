@@ -2,63 +2,81 @@
 {% extends 'plantilla.html' %}
 
 {% block body %}
+<div class="mb-5 mt-5">
+    <h1 class="display-1 text-center">Gestión de Albums</h1>
+</div>
 
-    <h1>Gestión de Albums</h1>
-    <br>
-    {% with mensajes = get_flashed_messages() %}
+<div class="container">
+<div class="row">
+
+    <div class="col-md-5">
+        <div class="card card-body mb-5">
+            
+            <div class="text-center">
+            <h1>Ingresar Albums</h1>
+            </div>
+
+            <form action="/guardar" method="POST">
+                <div class="mb-3">
+                    <label class="form-label">Titulo:</label>
+                    <input class="form-control" type="text" name="txtTitulo" placeholder="Escribe un Titulo" required>
+                </div>
+                <div class="mb-3">
+                    <label  class="form-label">Artista:</label>
+                    <input class="form-control" type="text" name="txtArtista" placeholder="Escribe un Artista" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Año:</label>
+                    <input class="form-control" type="number" name="txtAnio" placeholder="Escribe un Año" required>
+                </div>
+                
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-outline-primary">Guardar</button>
+                  </div>
+            </form>
+        </div>
+    </div> <!--Col-5-->
+
+
+    <div class="col-md-7 text-center">
+        <h1> Albums guardados </h1>
+        {% with mensajes = get_flashed_messages() %}
         {% if mensajes %}
             {% for msj in mensajes %}
                 <h5>{{msj}}</h5>
             {% endfor %}
         {% endif %}
-    {% endwith %}
-    <br>
-    <form action="/guardar" method="POST">
-        <label>Titulo:</label>
-        <input type="text" name="txtTitulo" placeholder="Escribe un Titulo" required>
-        <label>Artista:</label>
-        <input type="text" name="txtArtista" placeholder="Escribe un Artista" required>
-        <label>Año:</label>
-        <input type="number" name="txtAnio" placeholder="Escribe un Año" required>
-        <button type="submit">Guardar</button>
-    </form>
-    
-
-
-    <br>
-    <br>
-
-        <h2> Albums guardados </h2>
-        <table>
+        {% endwith %}
+        <table class="table">
             <thead>
-                <tr>
-                    <td>Id: </td>
-                    <td>Album: </td>
-                    <td>Artista: </td>
+                <tr class="table-primary">
+                    <td>Id</td>
+                    <td>Album</td>
+                    <td>Artista</td>
                     <td>Año publicación: </td>
+                    <td></td>
                 </tr>
             </thead>
             <tbody>
                 {% for alb in listAlbums %}
-                    <tr>
-                        <td> {{alb.0}} </td>
-                        <td> {{alb.1}} </td>
-                        <td> {{alb.2}} </td>
-                        <td> {{alb.3}} </td>
-                        <td>
+                    <tr class="table-light">
+                        <td scope="col"> {{alb.0}} </td>
+                        <td scope="col"> {{alb.1}} </td>
+                        <td scope="col"> {{alb.2}} </td>
+                        <td scope="col"> {{alb.3}} </td>
+                        <td scope="col">
 
-
-
-
-                            <a href=/editar/{{alb.0}}>Editar</a>
-                            <a href=/borrar/{{alb.0}}>Borrar</a>
-
-
+                            <a href=/editar/{{alb.0}} class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                            <a href=/borrar/{{alb.0}} class="btn btn-danger"><i class="bi bi-trash3"></i></a>
 
                         </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
+    </div> <!--Col-7--->
 
+</div>
+</div>
 {% endblock %}
