@@ -61,13 +61,29 @@ def actualizar(id): #metodo actualizar
     flash('El album ' + varTitulo + ' fue actualizado correctamente ')
     return redirect(url_for('index'))
 
-@app.route('/borrar/<id>')
+@app.route('/editar2/<string:id>')
+def editar2(id):
+    cursorID= mysql.connection.cursor()
+    cursorID.execute('SELECT * from tb_albums where id=%s', (id,))
+    consulID=cursorID.fetchone()
+    return render_template('editarAlbum2.html', album=consulID)
+
+@app.route('/borrar/<id>', methods=['POST'])
 def borrar(id):
-    cursorBorrar=mysql.connection.cursor()
-    cursorBorrar.execute('DELETE from tb_albums WHERE id=%s', (id,))
-    mysql.connection.commit()
-    flash('El album fue eliminado')
+    if request.method == 'POST':
+            curAct = mysql.connection.cursor()
+            curAct.execute('delete from tb_albums WHERE id=%s',(id,))
+            mysql.connection.commit()
+            flash('El album fue borrado')
     return redirect(url_for('index'))
+
+#@app.route('/borrar/<id>')
+#def borrar(id):
+#    cursorBorrar=mysql.connection.cursor()
+#    cursorBorrar.execute('DELETE from tb_albums WHERE id=%s', (id,))
+#    mysql.connection.commit()
+#    flash('El album fue eliminado')
+#    return redirect(url_for('index'))
 
 #------------------------------------------------------------
 

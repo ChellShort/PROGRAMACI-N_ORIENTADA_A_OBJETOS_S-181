@@ -41,13 +41,28 @@
 
     <div class="col-md-7 text-center">
         <h1> Albums guardados </h1>
+
+
         {% with mensajes = get_flashed_messages() %}
         {% if mensajes %}
             {% for msj in mensajes %}
-                <h5>{{msj}}</h5>
+
+            <!--<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>{{msj}}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>-->
+                    <script>
+                        Swal.fire(
+                    'Completado',
+                    '{{msj}}',
+                    'success'
+                    )
+                    </script>
             {% endfor %}
         {% endif %}
         {% endwith %}
+
+
         <table class="table">
             <thead>
                 <tr class="table-primary">
@@ -68,7 +83,7 @@
                         <td scope="col">
 
                             <a href=/editar/{{alb.0}} class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
-                            <a href=/borrar/{{alb.0}} class="btn btn-danger"><i class="bi bi-trash3"></i></a>
+                            <a href=/editar2/{{alb.0}} class="btn btn-danger"><i class="bi bi-trash3"></i></a>
 
                         </td>
                     </tr>
@@ -76,6 +91,8 @@
             </tbody>
         </table>
     </div> <!--Col-7--->
+
+    
 
 </div>
 </div>
