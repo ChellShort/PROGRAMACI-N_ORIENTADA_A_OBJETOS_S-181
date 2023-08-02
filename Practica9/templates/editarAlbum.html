@@ -3,18 +3,37 @@
 
 {% block body %}
 
-    <h1>Album a editar</h1>
+    
     <br>
     <br>
-
-    <form action="/actualizar/{{album.0}}" method="POST">
-        <label>Titulo:</label>
-        <input type="text" name="txtTitulo" value="{{album.1}}" required>
-        <label>Artista:</label>
-        <input type="text" name="txtArtista" value="{{album.2}}" required>
-        <label>Año:</label>
-        <input type="number" name="txtAnio" value="{{album.3}}" required>
-        <button type="submit">Actualizar</button>
-    </form>
-
+    <div class="container">
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+            <div class="card card-body mb-5">
+                <h1>Album a editar</h1>
+            <form action="/actualizar/{{album.0}}" method="POST">
+                <div class="mb-3">
+                <label class="form-label">Titulo:</label>
+                <input class="form-control" type="text" name="txtTitulo" value="{{album.1}}" required>
+                </div>
+                <div class="mb-3">
+                <label class="form-label">Artista:</label>
+                <input class="form-control" type="text" name="txtArtista" value="{{album.2}}" required>
+                </div>
+                <div class="mb-3">
+                <label class="form-label">Año:</label>
+                <input class="form-control" type="number" name="txtAnio" value="{{album.3}}" required>
+                </div>
+                <div class="d-grid gap-2">
+                <button class="btn btn-outline-primary" type="submit">Actualizar</button>
+                </div>
+            </form>
+        </div><!--Col-5-->
+        
+    </div>    
+    </div>
+    </div>
+    
 {% endblock %}
